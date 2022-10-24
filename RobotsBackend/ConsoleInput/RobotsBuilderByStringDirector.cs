@@ -31,7 +31,7 @@ internal class RobotsBuilderByStringDirector : IRobotsBuilderDirector<string>
         }
         catch (Exception e)
         {
-            _logger.LogError($"Unable to create robot form given data: {robotData}");
+            _logger.LogError($"Unable to create robot form given data: {robotData}. {e.Message}");
             return null;
         }
     }
@@ -49,7 +49,7 @@ internal class RobotsBuilderByStringDirector : IRobotsBuilderDirector<string>
         }
         catch (FormatException e)
         {
-            _logger.LogError($"Invalid coordinates format: {robotData}");
+            _logger.LogError($"Invalid coordinates format: {robotData}. {e.Message}");
             throw;
         }
 
@@ -61,7 +61,7 @@ internal class RobotsBuilderByStringDirector : IRobotsBuilderDirector<string>
         }
         catch (FormatException e)
         {
-            _logger.LogError($"Invalid direction format: {robotData}");
+            _logger.LogError($"Invalid direction format: {robotData}. {e.Message}");
             throw;
         }
 

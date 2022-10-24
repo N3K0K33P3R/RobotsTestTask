@@ -5,6 +5,13 @@ namespace RobotsBackend.ConsoleInput;
 
 internal class WorldBorderFromStringParser : IWorldBorderFromStringParser
 {
+    private readonly ILogger _logger;
+
+    public WorldBorderFromStringParser(ILogger logger)
+    {
+        _logger = logger;
+    }
+    
     public bool TryParse(string borderString, ref Point border)
     {
         var borderStringSplitted = borderString.Split(' ');
@@ -18,6 +25,7 @@ internal class WorldBorderFromStringParser : IWorldBorderFromStringParser
         }
         catch (Exception e)
         {
+            _logger.LogError($"Invalid border format: {borderString}. {e.Message}");
             return false;
         }
 

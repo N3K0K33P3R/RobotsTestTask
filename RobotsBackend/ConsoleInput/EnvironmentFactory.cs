@@ -9,7 +9,7 @@ public class EnvironmentFactory : IEnvironmentFactory
     public IInputHandler Build(IConsoleWorker consoleWorker)
     {
         var consoleLogger = new ConsoleLogger();
-        var worldBorderFromStringParser = new WorldBorderFromStringParser();
+        var worldBorderFromStringParser = new WorldBorderFromStringParser(consoleLogger);
         var robotsBuilder = new RobotsBuilder();
         var robotsBuilderByStringDirector = new RobotsBuilderByStringDirector(robotsBuilder, consoleLogger);
         var commandsListFromStringDataFactory = new CommandsListFromStringDataFactory(consoleLogger);
